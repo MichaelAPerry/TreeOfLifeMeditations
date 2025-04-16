@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fool's Journey - Tree of Life</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Additional debugging styles */
+        #debug-info {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        
+        .debug-panel {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-left: 4px solid #4b0082;
+        }
+        
+        .highlight-area {
+            position: absolute;
+            background-color: rgba(255, 255, 0, 0.3);
+            border: 2px solid yellow;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Fool's Journey - Tree of Life Meditations</h1>
+            <p>Click on any path to view the tarot trump and play the meditation</p>
+        </header>
+        
+        <main>
+            <div class="tree-container">
+                <img src="images/Tree_of_life1.jpg" alt="Tree of Life" id="tree-of-life" usemap="#tree-map">
+                
+                <map name="tree-map" id="tree-map">
+                    <!-- Path 0: The Fool - Connects Crown to Wisdom -->
+                    <area shape="poly" coords="175,125, 185,125, 225,175, 215,175" alt="The Fool" data-path="0" data-trump="The Fool">
+                    
+                    <!-- Path 1: The Magician - Connects Crown to Understanding -->
+                    <area shape="poly" coords="125,125, 135,125, 95,175, 85,175" alt="The Magician" data-path="1" data-trump="The Magician">
+                    
+                    <!-- Path 2: The High Priestess - Connects Crown to Knowledge -->
+                    <area shape="poly" coords="150,125, 160,125, 160,225, 150,225" alt="The High Priestess" data-path="2" data-trump="The High Priestess">
+                    
+                    <!-- Path 3: The Empress - Connects Wisdom to Understanding -->
+                    <area shape="poly" coords="95,175, 105,175, 215,175, 205,175" alt="The Empress" data-path="3" data-trump="The Empress">
+                    
+                    <!-- Path 4: The Emperor - Connects Wisdom to Mercy -->
+                    <area shape="poly" coords="215,175, 225,175, 195,275, 185,275" alt="The Emperor" data-path="4" data-trump="The Emperor">
+                    
+                    <!-- Path 5: The Hierophant - Connects Wisdom to Knowledge -->
+                    <area shape="poly" coords="205,175, 215,175, 160,225, 150,225" alt="The Hierophant" data-path="5" data-trump="The Hierophant">
+                    
+                    <!-- Path 6: The Lovers - Connects Understanding to Knowledge -->
+                    <area shape="poly" coords="95,175, 105,175, 150,225, 140,225" alt="The Lovers" data-path="6" data-trump="The Lovers">
+                    
+                    <!-- Path 7: The Chariot - Connects Understanding to Judgement -->
+                    <area shape="poly" coords="85,175, 95,175, 115,275, 105,275" alt="The Chariot" data-path="7" data-trump="The Chariot">
+                    
+                    <!-- Path 8: Strength - Connects Mercy to Judgement -->
+                    <area shape="poly" coords="115,275, 125,275, 185,275, 175,275" alt="Strength" data-path="8" data-trump="Strength">
+                    
+                    <!-- Path 9: The Hermit - Connects Mercy to Beauty -->
+                    <area shape="poly" coords="185,275, 195,275, 155,325, 145,325" alt="The Hermit" data-path="9" data-trump="The Hermit">
+                    
+                    <!-- Path 10: Wheel of Fortune - Connects Mercy to Knowledge -->
+                    <area shape="poly" coords="185,275, 195,275, 160,225, 150,225" alt="Wheel of Fortune" data-path="10" data-trump="Wheel of Fortune">
+                    
+                    <!-- Path 11: Justice - Connects Knowledge to Beauty -->
+                    <area shape="poly" coords="150,225, 160,225, 155,325, 145,325" alt="Justice" data-path="11" data-trump="Justice">
+                    
+                    <!-- Path 12: The Hanged Man - Connects Judgement to Beauty -->
+                    <area shape="poly" coords="115,275, 125,275, 145,325, 135,325" alt="The Hanged Man" data-path="12" data-trump="The Hanged Man">
+                    
+                    <!-- Path 13: Death - Connects Beauty to Eternity -->
+                    <area shape="poly" coords="155,325, 165,325, 195,375, 185,375" alt="Death" data-path="13" data-trump="Death">
+                    
+                    <!-- Path 14: Temperance - Connects Beauty to Foundation -->
+                    <area shape="poly" coords="145,325, 155,325, 155,425, 145,425" alt="Temperance" data-path="14" data-trump="Temperance">
+                    
+                    <!-- Path 15: The Devil - Connects Beauty to Reverberation -->
+                    <area shape="poly" coords="135,325, 145,325, 115,375, 105,375" alt="The Devil" data-path="15" data-trump="The Devil">
+                    
+                    <!-- Path 16: The Tower - Connects Judgement to Reverberation -->
+                    <area shape="poly" coords="105,275, 115,275, 105,375, 95,375" alt="The Tower" data-path="16" data-trump="The Tower">
+                    
+                    <!-- Path 17: The Star - Connects Foundation to Eternity -->
+                    <area shape="poly" coords="155,425, 165,425, 185,375, 175,375" alt="The Star" data-path="17" data-trump="The Star">
+                    
+                    <!-- Path 18: The Moon - Connects Foundation to Reverberation -->
+                    <area shape="poly" coords="145,425, 155,425, 115,375, 105,375" alt="The Moon" data-path="18" data-trump="The Moon">
+                    
+                    <!-- Path 19: The Sun - Connects Reverberation to Kingdom -->
+                    <area shape="poly" coords="105,375, 115,375, 145,475, 135,475" alt="The Sun" data-path="19" data-trump="The Sun">
+                    
+                    <!-- Path 20: Judgement - Connects Foundation to Kingdom -->
+                    <area shape="poly" coords="145,425, 155,425, 155,475, 145,475" alt="Judgement" data-path="20" data-trump="Judgement">
+                    
+                    <!-- Path 21: The World - Connects Eternity to Kingdom -->
+                    <area shape="poly" coords="185,375, 195,375, 165,475, 155,475" alt="The World" data-path="21" data-trump="The World">
+                </map>
+            </div>
+            
+            <div class="display-panel">
+                <div class="tarot-display">
+                    <h2 id="tarot-title">Select a path on the Tree of Life</h2>
+                    <div class="tarot-image-container">
+                        <img id="tarot-image" src="" alt="Tarot Trump">
+                    </div>
+                </div>
+                
+                <div class="audio-player">
+                    <audio id="meditation-audio" controls>
+                        <source src="" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="path-info">
+                    <p id="path-description"></p>
+                </div>
+                
+                <!-- Debug information panel -->
+                <div class="debug-panel">
+                    <h3>Debug Information</h3>
+                    <p>If clicking on paths doesn't work, please check the browser console for errors.</p>
+                    <p>You can also try using keyboard navigation (arrow keys) to select paths.</p>
+                    <div id="debug-info">Waiting for interaction...</div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>The Fool's Journey - Tree of Life Meditations by Stephan Hoeller</p>
+        </footer>
+    </div>
+    
+    <script src="js/debug-script.js"></script>
+</body>
+</html>

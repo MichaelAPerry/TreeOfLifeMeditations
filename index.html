@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fool's Journey - Tree of Life</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f0f0f0;
+            background-image: linear-gradient(to bottom, #e6e6fa, #9370db);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4b0082;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            main {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        .tree-container {
+            position: relative;
+            max-width: 100%;
+            height: auto;
+        }
+
+        #tree-of-life {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .display-panel {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .tarot-display {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #tarot-title {
+            color: #4b0082;
+            margin-bottom: 15px;
+        }
+
+        .tarot-image-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        #tarot-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+
+        .audio-player {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        #meditation-audio {
+            width: 100%;
+        }
+
+        .path-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            border-left: 4px solid #4b0082;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #4b0082;
+        }
+
+        /* Path buttons styling */
+        .path-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .path-button {
+            background-color: #4b0082;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .path-button:hover {
+            background-color: #9370db;
+            transform: scale(1.05);
+        }
+
+        .path-button.active {
+            background-color: #ff9900;
+            box-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+        }
+
+        /* Navigation controls */
+        .navigation-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            background-color: #4b0082;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #9370db;
+        }
+
+        /* Path legend */
+        .path-legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            border-left: 4px solid #4b0082;
+        }
+
+        .path-legend h3 {
+            color: #4b0082;
+            margin-bottom: 10px;
+        }
+
+        .path-legend-item {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Fool's Journey - Tree of Life Meditations</h1>
+            <p>Select a path number to view the tarot trump and play the meditation</p>
+        </header>
+        
+        <main>
+            <div class="tree-container">
+                <img src="images/Tree_of_life1.jpg" alt="Tree of Life" id="tree-of-life">
+                
+                <!-- Path buttons - Corrected numbering based on user's files -->
+                <div class="path-buttons">
+                    <button class="path-button" data-path="01" data-trump="The World">1</button>
+                    <button class="path-button" data-path="02" data-trump="The Moon">2</button>
+                    <button class="path-button" data-path="03" data-trump="Judgement">3</button>
+                    <button class="path-button" data-path="04" data-trump="The Sun">4</button>
+                    <button class="path-button" data-path="05" data-trump="The Star">5</button>
+                    <button class="path-button" data-path="06" data-trump="The Tower">6</button>
+                    <button class="path-button" data-path="07" data-trump="Temperance">7</button>
+                    <button class="path-button" data-path="08" data-trump="The Devil">8</button>
+                    <button class="path-button" data-path="09" data-trump="Death">9</button>
+                    <button class="path-button" data-path="10" data-trump="Justice">10</button>
+                    <button class="path-button" data-path="11" data-trump="The Hermit">11</button>
+                    <button class="path-button" data-path="12" data-trump="Strength">12</button>
+                    <button class="path-button" data-path="13" data-trump="The Hanged Man">13</button>
+                    <button class="path-button" data-path="14" data-trump="The Wheel of Fortune">14</button>
+                    <button class="path-button" data-path="15" data-trump="The High Priestess">15</button>
+                    <button class="path-button" data-path="16" data-trump="The Lovers">16</button>
+                    <button class="path-button" data-path="17" data-trump="The Emperor">17</button>
+                    <button class="path-button" data-path="18" data-trump="The Chariot">18</button>
+                    <button class="path-button" data-path="19" data-trump="The Hierophant">19</button>
+                    <button class="path-button" data-path="20" data-trump="The Empress">20</button>
+                    <button class="path-button" data-path="21" data-trump="The Magician">21</button>
+                    <button class="path-button" data-path="22" data-trump="The Fool">22</button>
+                </div>
+                
+                <!-- Navigation controls -->
+                <div class="navigation-controls">
+                    <button class="nav-button" id="prev-button">Previous Path</button>
+                    <button class="nav-button" id="next-button">Next Path</button>
+                </div>
+                
+                <!-- Path legend -->
+                <div class="path-legend">
+                    <h3>Path Reference (Ascending the Tree)</h3>
+                    <div class="path-legend-item"><strong>1: The World</strong> - Connects Malkuth (Kingdom) to Yesod (Foundation)</div>
+                    <div class="path-legend-item"><strong>2: The Moon</strong> - Connects Malkuth (Kingdom) to Netzach (Victory)</div>
+                    <div class="path-legend-item"><strong>3: Judgement</strong> - Connects Malkuth (Kingdom) to  Hod (Splendor) </div>
+                    <div class="path-legend-item"><strong>4: The Sun</strong> - Connects Yesod (Foundation) to Hod (Splendor)</div>
+                    <div class="path-legend-item"><strong>5: The Star</strong> - Connects Yesod (Foundation) to Netzach (Victory)</div>
+                    <div class="path-legend-item"><strong>6: The Tower</strong> - Connects Hod (Splendor) to Netzach (Victory)</div>
+                    <div class="path-legend-item"><strong>7: Temperance</strong> - Connects Yesod (Foundation) to Tiphareth (Beauty)</div>
+                    <div class="path-legend-item"><strong>8: The Devil</strong> - Connects Hod (Splendor) to Tiphareth (Beauty)</div>
+                    <div class="path-legend-item"><strong>9: Death</strong> - Connects Netzach (Victory) to Tiphareth (Beauty)</div>
+                    <div class="path-legend-item"><strong>10: Justice</strong> - Connects Tiphareth (Beauty) to Geburah (Severity)</div>
+                    <div class="path-legend-item"><strong>11: The Hermit</strong> - Connects Tiphareth (Beauty) to Chesed (Mercy)</div>
+                    <div class="path-legend-item"><strong>12: Strength</strong> - Connects Geburah (Severity) to Chesed (Mercy)</div>
+                    <div class="path-legend-item"><strong>13: The Hanged Man</strong> - Connects Hod (Splendor) to Geburah (Severity)</div>
+                    <div class="path-legend-item"><strong>14: The Wheel of Fortune</strong> - Connects Netzach (Victory) to Chesed (Mercy</div>
+                    <div class="path-legend-item"><strong>15: The High Priestess</strong> - Connects Tiphareth (Beauty) to Kether (Crown)</div>
+                    <div class="path-legend-item"><strong>16: The Lovers</strong> - Connects Tiphareth (Beauty) to Binah (Understanding)</div>
+                    <div class="path-legend-item"><strong>17: The Emperor</strong> - Connects Tiphareth (Beauty) to Chokmah (Wisdom)</div>
+                    <div class="path-legend-item"><strong>18: The Chariot</strong> - Connects Geburah (Severity) to Binah (Understanding)</div>
+                    <div class="path-legend-item"><strong>19: The Hierophant</strong> - Connects Chesed (Mercy) to Chokmah (Wisdom)</div>
+                    <div class="path-legend-item"><strong>20: The Empress</strong> - Connects Binah (Understanding) to Chokmah (Wisdom)</div>
+                    <div class="path-legend-item"><strong>21: The Magician</strong> - Connects Kether (Crown) to Binah (Understanding)</div>
+                    <div class="path-legend-item"><strong>22: The Fool</strong> - Connects Kether (Crown) to Chokmah (Wisdom)</div>
+                </div>
+            </div>
+            
+            <div class="display-panel">
+                <div class="tarot-display">
+                    <h2 id="tarot-title">Select a path number</h2>
+                    <div class="tarot-image-container">
+                        <img id="tarot-image" src="" alt="Tarot Trump">
+                    </div>
+                </div>
+                
+                <div class="audio-player">
+                    <audio id="meditation-audio" controls>
+                        <source src="" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="path-info">
+                    <p id="path-description"></p>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>The Fool's Journey - Tree of Life Meditations by Stephan Hoeller</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cache DOM elements
+            const tarotTitle = document.getElementById('tarot-title');
+            const tarotImage = document.getElementById('tarot-image');
+            const meditationAudio = document.getElementById('meditation-audio');
+            const pathDescription = document.getElementById('path-description');
+            const pathButtons = document.querySelectorAll('.path-button');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
+            
+            // Path descriptions - Updated with accurate information from Wang's Qabalistic Tarot
+            const pathDescriptions = {
+                "01": "Path 32: The World - This path connects Malkuth (Kingdom) to Yesod (Foundation). It represents the completion of a cycle and the integration of all elements. As the first step in ascending the Tree of Life, it symbolizes the transition from the material world to the astral realm. The World card represents cosmic consciousness, wholeness, and the perfect union of the individual with the universe. This path teaches us about the nature of completion and the cyclical nature of existence.",
+                
+                "02": "Path 29: The Moon - This path connects Malkuth (Kingdom) to Netzach (Victory). It represents the subconscious mind and the realm of dreams and illusions. The Moon path is one of the most challenging, as it requires navigating through uncertainty and facing hidden fears. It teaches us to trust our intuition and to recognize that what appears in the material world is often a reflection of deeper psychological patterns. This path is associated with the element of Water in its most mysterious form.",
+                
+                "03": "Path 31: Judgement - This path connects Malkuth (Kingdom) to  Hod (Splendor). It represents spiritual awakening and the call to higher consciousness. On this path, we experience a rebirth as we begin to transcend purely material concerns. The Judgement card symbolizes the awakening to a higher purpose and the realization that we are more than our physical bodies. This path teaches us about transformation and the renewal of the spirit.",
+                
+                "04": "Path 30: The Sun - This path connects Yesod (Foundation) to Hod (Splendor). It represents illumination, vitality, and conscious awareness. The Sun brings light to the astral realm, allowing for clear perception and understanding. This path teaches us about the joy of existence and the power of clarity. The Sun card symbolizes the conscious mind fully awakened, bringing warmth and light to the material world. On this path, one experiences the warmth and light of spiritual truth.",
+                
+                "05": "Path 28: The Star - This path connects Yesod (Foundation) to Netzach (Victory). It represents hope, inspiration, and spiritual insight. The Star is a guiding light on the spiritual journey, offering renewal and the promise of fulfillment. This path teaches us about faith and the connection to universal energies. The Star card symbolizes the cosmic influences that guide us toward our highest potential. This path is associated with meditation and the receptive aspects of consciousness.",
+                
+                "06": "Path 27: The Tower - This path connects Hod (Splendor) to Netzach (Victory). It represents sudden change, revelation, and the breaking down of false structures. The Tower is a path of transformation through crisis, where old patterns and beliefs are shattered to make way for truth. This path teaches us about liberation through surrender and the necessity of destruction before reconstruction. The Tower card symbolizes the lightning flash of divine inspiration that breaks through illusion.",
+                
+                "07": "Path 25: Temperance - This path connects Yesod (Foundation) to Tiphareth (Beauty). It represents balance, harmony, and the blending of opposites. Temperance is a path of moderation and the middle way, where extremes are reconciled. This path teaches us about integration and the alchemy of transformation. The Temperance card symbolizes the angel who stands between worlds, mixing the waters of consciousness. This path is associated with healing and the harmonization of forces.",
+                
+                "08": "Path 26: The Devil - This path connects Hod (Splendor) to Tiphareth (Beauty). It represents bondage, materialism, and the shadow aspects of the self. The Devil is a path of confronting our attachments and recognizing how we limit ourselves. This path teaches us about freedom through awareness of our constraints. The Devil card symbolizes the illusion of separation and the chains we forge through ignorance. This path is associated with facing our deepest fears and desires.",
+                
+                "09": "Path 24: Death - This path connects Netzach (Victory) to Tiphareth (Beauty). It represents transformation, endings, and new beginnings. Death is a path of surrender and letting go, where the old self dies to make way for the new. This path teaches us about the impermanence of all things and the necessity of change for growth. The Death card symbolizes the cutting away of what is no longer needed. This path is associated with profound transformation and the release of attachments.",
+                
+                "10": "Path 22: Justice - This path connects Tiphareth (Beauty) to Geburah (Severity). It represents equilibrium, truth, and karmic law. Justice is a path of balance and adjustment, where cause and effect are recognized. This path teaches us about responsibility and the consequences of our actions. The Justice card symbolizes the scales that weigh all deeds and thoughts. This path is associated with ethical decision-making and the alignment with universal law.",
+                
+                "11": "Path 20: The Hermit - This path connects Tiphareth (Beauty) to Chesed (Mercy). It represents introspection, solitude, and inner guidance. The Hermit is a path of withdrawal from external distractions to find wisdom within. This path teaches us about the light of our own higher self that guides us on the journey. The Hermit card symbolizes the sage who has climbed the mountain of spiritual attainment. This path is associated with the quest for self-knowledge and spiritual wisdom.",
+                
+                "12": "Path 19: Strength - This path connects Geburah (Severity) to Chesed (Mercy). It represents courage, patience, and the mastery of passion by compassion. Strength is a path of gentle power and the taming of the lower nature. This path teaches us about the strength that comes from love rather than force. The Strength card symbolizes the harmonious relationship between the human and animal natures. This path is associated with spiritual fortitude and the power of the higher self.",
+                
+                "13": "Path 23: The Hanged Man - This path connects to Hod (Splendor) to Geburah (Severity). It represents surrender, sacrifice, and gaining new perspective. The Hanged Man is a path of suspension between worlds, where normal perception is inverted. This path teaches us about the value of surrender and the wisdom gained through letting go of control. The Hanged Man card symbolizes the willing sacrifice for higher knowledge. This path is associated with mystical initiation and the reversal of conventional thinking.",
+                
+                "14": "Path 21: The Wheel of Fortune - This path connects Netzach (Victory) to Chesed (Mercy). It represents cycles, destiny, and the ever-changing nature of existence. The Wheel of Fortune is a path of recognizing the patterns of life and our place within them. This path teaches us about adaptation and the acceptance of change as a constant. The Wheel of Fortune card symbolizes the cosmic forces that govern all cycles of manifestation. This path is associated with karma and the understanding of cause and effect across time.",
+                
+                "15": "Path 13: The High Priestess - This path connects Tiphareth (Beauty) to Kether (Crown). It represents intuition, mystery, and the subconscious mind. The High Priestess is a path of hidden knowledge and the veil between worlds. This path teaches us about the depths of the unconscious and the wisdom that lies beyond rational thought. The High Priestess card symbolizes the keeper of esoteric secrets and the gateway to the divine feminine. This path is associated with initiation into the mysteries and the development of psychic faculties.",
+                
+                "16": "Path 17: The Lovers - This path connects Tiphareth (Beauty) to Binah (Understanding). It represents relationships, choices, and the integration of opposites. The Lovers is a path of decision and commitment, where polarities are reconciled. This path teaches us about the power of love to unite what is separate. The Lovers card symbolizes the divine marriage of masculine and feminine principles. This path is associated with moral choice and the alignment of will with higher purpose.",
+                
+                "17": "Path 15: The Emperor - This path connects Tiphareth (Beauty) to Chokmah (Wisdom). It represents authority, structure, and the organizing principle. The Emperor is a path of order and the establishment of boundaries. This path teaches us about the responsible use of power and the creation of stable foundations. The Emperor card symbolizes the archetype of the father and the principle of divine law. This path is associated with leadership and the manifestation of ideas into form.",
+                
+                "18": "Path 18: The Chariot - This path connects Geburah (Severity) to Binah (Understanding). It represents will, conquest, and the mastery of opposing forces. The Chariot is a path of directed energy and focused intention. This path teaches us about determination and the power to overcome obstacles. The Chariot card symbolizes the vehicle of consciousness that carries us through the spiritual journey. This path is associated with self-control and the disciplined application of will.",
+                
+                "19": "Path 16: The Hierophant - This path connects Chesed (Mercy) to Chokmah (Wisdom). It represents tradition, education, and spiritual guidance. The Hierophant is a path of initiation into established wisdom and the transmission of sacred knowledge. This path teaches us about the value of tradition and the connection to spiritual lineage. The Hierophant card symbolizes the bridge between divine and human understanding. This path is associated with religious structures and the interpretation of spiritual principles.",
+                
+                "20": "Path 14: The Empress - This path connects Binah (Understanding) to Chokmah (Wisdom). It represents fertility, nurturing, and abundance. The Empress is a path of creativity and the manifestation of beauty. This path teaches us about the generative power of nature and the fecundity of the imagination. The Empress card symbolizes the great mother and the principle of love that sustains all life. This path is associated with creativity and the appreciation of natural beauty.",
+                
+                "21": "Path 12: The Magician - This path connects Binah (Understanding) to Kether (Crown). It represents skill, consciousness, and the power to manifest. The Magician is a path of focused will and the channeling of divine energy. This path teaches us about our role as co-creators with the divine. The Magician card symbolizes the adept who can direct the forces of creation. This path is associated with communication between higher and lower realms and the conscious direction of energy.",
+                
+                "22": "Path 11: The Fool - This path connects Kether (Crown) to Chokmah (Wisdom). It represents beginnings, innocence, and unlimited potential. The Fool is a path of pure spirit embarking on the journey of manifestation. This path teaches us about trust, spontaneity, and the courage to take a leap of faith. The Fool card symbolizes the divine spark within each of us that ventures forth into experience. This path is associated with the element of Air and the breath of life that animates all forms."
+            };
+            
+            // Current active display path
+            let currentDisplayPath = 1;
+            
+            // Add click event listeners to all path buttons
+            pathButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const displayPath = parseInt(this.textContent);
+                    const actualPath = this.getAttribute('data-path');
+                    const trumpName = this.getAttribute('data-trump');
+                    updateDisplay(displayPath, actualPath, trumpName);
+                });
+            });
+            
+            // Add click event listeners to navigation buttons
+            prevButton.addEventListener('click', function() {
+                navigatePath(-1);
+            });
+            
+            nextButton.addEventListener('click', function() {
+                navigatePath(1);
+            });
+            
+            // Function to update the display with the selected path information
+            function updateDisplay(displayPath, actualPath, trumpName) {
+                // Update active button
+                pathButtons.forEach(button => {
+                    button.classList.remove('active');
+                    if (parseInt(button.textContent) === displayPath) {
+                        button.classList.add('active');
+                    }
+                });
+                
+                // Update current active path
+                currentDisplayPath = displayPath;
+                
+                // Update title
+                tarotTitle.textContent = `${trumpName} (Path ${displayPath})`;
+                
+                // Update image - use clean filename format
+                const imageName = trumpName.replace(/\s+/g, '');
+                tarotImage.src = `images/${imageName}.jpg`;
+                tarotImage.alt = trumpName;
+                tarotImage.style.display = 'block';
+                
+                // Update audio - use the actual path number for the audio file
+                meditationAudio.src = `audio/${actualPath} ${trumpName}.wav`;
+                meditationAudio.load();
+                
+                // Update path description - use the actual path number for the description
+                pathDescription.textContent = pathDescriptions[actualPath];
+            }
+            
+            // Function to navigate paths with buttons or keyboard
+            function navigatePath(direction) {
+                currentDisplayPath = currentDisplayPath + direction;
+                
+                // Ensure we stay within valid range (1-22)
+                if (currentDisplayPath < 1) {
+                    currentDisplayPath = 22;
+                } else if (currentDisplayPath > 22) {
+                    currentDisplayPath = 1;
+                }
+                
+                const button = document.querySelector(`.path-button:nth-child(${currentDisplayPath})`);
+                const actualPath = button.getAttribute('data-path');
+                const trumpName = button.getAttribute('data-trump');
+                updateDisplay(currentDisplayPath, actualPath, trumpName);
+            }
+            
+            // Add keyboard navigation for accessibility
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    navigatePath(1);
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    navigatePath(-1);
+                }
+            });
+            
+            // Function to handle image loading errors
+            tarotImage.addEventListener('error', function() {
+                this.src = createPlaceholder(this.alt || 'Unknown');
+                this.alt = 'Image not available';
+            });
+            
+            // Function to handle audio loading errors
+            meditationAudio.addEventListener('error', function() {
+                pathDescription.textContent += '\n\nMeditation audio not available for this path.';
+            });
+            
+            // Create a placeholder image with the trump name
+            function createPlaceholder(trumpName) {
+                const canvas = document.createElement('canvas');
+                canvas.width = 300;
+                canvas.height = 450;
+                const ctx = canvas.getContext('2d');
+                
+                // Fill background
+                ctx.fillStyle = '#f8f8f8';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Add border
+                ctx.strokeStyle = '#4b0082';
+                ctx.lineWidth = 10;
+                ctx.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
+                
+                // Add text
+                ctx.fillStyle = '#4b0082';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(trumpName, canvas.width/2, 50);
+                
+                ctx.font = '20px Arial';
+                ctx.fillText('Image not found', canvas.width/2, canvas.height/2 - 20);
+                ctx.fillText('Please check file name', canvas.width/2, canvas.height/2 + 20);
+                
+                // Add decorative elements
+                ctx.beginPath();
+                ctx.arc(canvas.width/2, canvas.height/2 + 80, 50, 0, Math.PI * 2);
+                ctx.strokeStyle = '#9370db';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // Convert to data URL and create image
+                return canvas.toDataURL('image/png');
+            }
+            
+            // Set initial placeholder
+            const initialPlaceholder = createPlaceholder('The Fool\'s Journey');
+            tarotImage.src = initialPlaceholder;
+            tarotImage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

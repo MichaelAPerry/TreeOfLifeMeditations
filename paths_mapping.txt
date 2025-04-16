@@ -1,0 +1,30 @@
+Tree of Life Paths and Corresponding Tarot Trumps
+
+Based on the Tree of Life image, here are all the paths with their corresponding tarot trumps:
+
+Path 0: The Fool - Connects Crown to Wisdom
+Path 1: The Magician - Connects Crown to Understanding
+Path 2: The High Priestess - Connects Crown to Knowledge
+Path 3: The Empress - Connects Wisdom to Understanding
+Path 4: The Emperor - Connects Wisdom to Mercy
+Path 5: The Hierophant - Connects Wisdom to Knowledge
+Path 6: The Lovers - Connects Understanding to Knowledge
+Path 7: The Chariot - Connects Understanding to Judgement
+Path 8: Strength - Connects Mercy to Judgement
+Path 9: The Hermit - Connects Mercy to Beauty
+Path 10: Wheel of Fortune - Connects Mercy to Knowledge
+Path 11: Justice - Connects Knowledge to Beauty
+Path 12: The Hanged Man - Connects Judgement to Beauty
+Path 13: Death - Connects Beauty to Eternity
+Path 14: Temperance - Connects Beauty to Foundation
+Path 15: The Devil - Connects Beauty to Reverberation
+Path 16: The Tower - Connects Judgement to Reverberation
+Path 17: The Star - Connects Foundation to Eternity
+Path 18: The Moon - Connects Foundation to Reverberation
+Path 19: The Sun - Connects Reverberation to Kingdom
+Path 20: Judgement - Connects Foundation to Kingdom
+Path 21: The World - Connects Eternity to Kingdom
+
+Each path will need:
+1. A corresponding tarot trump image (named according to the pattern: <trumpname>.jpg)
+2. A corresponding audio meditation file (currently in WAV format)
